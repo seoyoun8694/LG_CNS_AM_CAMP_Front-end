@@ -1,0 +1,17 @@
+<body>
+    <script>
+        const date = new Date();
+        let hour = String(date.getHours()).padStart(2, '0');
+        let min = String(date.getMinutes()).padStart(2, '0');
+        let sec = String(date.getSeconds()).padStart(2, '0');
+        
+        console.log("현재시각 : " + hour + "시 " + min + "분 " + sec + "초");
+        if (hour < 12) {
+            console.log("아침");
+        } else if (hour < 18) {
+            console.log("점심");
+        } else {
+            console.log("저녁");
+        }
+    </script>
+</body>

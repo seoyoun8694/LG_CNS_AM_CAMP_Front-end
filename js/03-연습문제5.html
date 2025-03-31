@@ -1,0 +1,24 @@
+<body>
+    <script>
+        const map = ['가위', '바위', '보'];
+        const player = 0;
+        const com = parseInt(Math.random() * 3);
+        console.log(`player: ${map[player]}, com: ${map[com]}`);
+        let result = '';
+
+        if (player === com) {
+            result = '비김';
+        } else if (
+            (player === 0 && com === 2) ||
+            (player === 1 && com === 0) ||
+            (player === 2 && com === 1)
+        ) {
+            result = 'player 승';
+        } else {
+            result = 'com 승';
+        }
+
+        console.log(`결과: ${result}`);
+
+    </script>
+</body>

@@ -1,0 +1,22 @@
+<body>
+    <script>
+        const house = {
+            bathroom: 1,
+            room: 2,
+            address: ['제주도', '제주시', '연동'],
+            persons: [
+                { name: 'kim' },
+                { name: 'lee' }
+            ]
+        };
+
+        // bathroom 속성 제거
+        delete house.bathroom;
+
+        // animals 속성 추가
+        house.animals = ['🐕‍🦺', '🐈'];
+
+        // 변경된 객체 출력
+        console.log(house);
+    </script>
+</body>

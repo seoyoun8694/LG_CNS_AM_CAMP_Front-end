@@ -1,0 +1,26 @@
+<body>
+    <script>
+        const article = {
+            num: 1,
+            title: 'A',
+            reply: [
+                { num: 3, title: 'A-3' },
+                { num: 2, title: 'A-2' },
+                { num: 1, title: 'A-1' }
+            ]
+        };
+
+        // article 객체의 모든 속성 출력
+        for (let key in article) {
+            // 만약 해당 속성의 값이 객체(배열 포함)라면 추가 반복문 실행
+            if (typeof article[key] === 'object') {
+                console.log(`${key}:`);
+                for (let item of article[key]) {
+                    console.log(`  { num: ${item.num}, title: '${item.title}' }`);
+                }
+            } else {
+                console.log(`${key}: ${article[key]}`);
+            }
+        }
+    </script>
+</body>

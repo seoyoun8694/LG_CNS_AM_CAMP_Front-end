@@ -1,0 +1,15 @@
+<body>
+    <script>
+        const array = [1, 2, 3, 4, 5];
+
+        // 첫 번째/마지막 요소 저장
+        const first = array.shift();
+        const last = array.pop();
+
+        // 마지막 요소를 배열의 앞쪽/끝쪽에 추가
+        array.unshift(last);
+        array.push(first);
+
+        console.log(array);
+    </script>
+</body>

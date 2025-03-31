@@ -1,0 +1,171 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐러셀 연습</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        .carousel-container {
+            width: 80%; height: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 850px;
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-item:hover {
+            background-color: rgb(241, 241, 241);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+        }
+
+        .title {
+            font-size: 2em;
+            margin: 15px 0;
+        }
+
+        .title:hover {
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        .description {
+            font-size: 1em;
+            color: #a3a3a3;
+            margin-top: 15px;
+        }
+
+        .description:hover {
+            color: dodgerblue;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 100%;
+            left: 290%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 100%;
+            width: 100px; height: 100px;
+            font-size: 40px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="https://img.daily.co.kr/@files/www.daily.co.kr/content/food/2020/20200730/40d0fb3794229958bdd1e36520a4440f.jpg" alt="음식1">
+                <div class="title">음식 1</div>
+                <div class="subtitle">맛있는 요리</div>
+                <div class="description">이 요리는 신선한 재료로 만들어져 건강에 좋습니다.</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn.news.hidoc.co.kr/news/photo/202011/23326_55488_0846.jpg" alt="음식2">
+                <div class="title">음식 2</div>
+                <div class="subtitle">고급 레시피</div>
+                <div class="description">정성스럽게 조리된 요리로 깊은 풍미를 느낄 수 있습니다.</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.adobe.com/kr/creativecloud/photography/hub/features/media_19243bf806dc1c5a3532f3e32f4c14d44f81cae9f.jpeg?width=750&format=jpeg&optimize=medium" alt="음식3">
+                <div class="title">음식 3</div>
+                <div class="subtitle">특별한 맛</div>
+                <div class="description">색다른 조합으로 입맛을 사로잡는 특별한 요리입니다.</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.adobe.com/kr/creativecloud/photography/hub/features/media_19243bf806dc1c5a3532f3e32f4c14d44f81cae9f.jpeg?width=750&format=jpeg&optimize=medium" alt="음식3">
+                <div class="title">음식 4</div>
+                <div class="subtitle">특별한 맛</div>
+                <div class="description">색다른 조합으로 입맛을 사로잡는 특별한 요리입니다.</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.adobe.com/kr/creativecloud/photography/hub/features/media_19243bf806dc1c5a3532f3e32f4c14d44f81cae9f.jpeg?width=750&format=jpeg&optimize=medium" alt="음식3">
+                <div class="title">음식 5</div>
+                <div class="subtitle">특별한 맛</div>
+                <div class="description">색다른 조합으로 입맛을 사로잡는 특별한 요리입니다.</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.adobe.com/kr/creativecloud/photography/hub/features/media_19243bf806dc1c5a3532f3e32f4c14d44f81cae9f.jpeg?width=750&format=jpeg&optimize=medium" alt="음식3">
+                <div class="title">음식 6</div>
+                <div class="subtitle">특별한 맛</div>
+                <div class="description">색다른 조합으로 입맛을 사로잡는 특별한 요리입니다.</div>
+            </div>
+        </div>
+        <button class="prev" style="margin-left: 60px;">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let index = 0;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${index * 107}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (index < items.length - 3) {
+                index++;
+            } else {
+                index = 0;
+            }
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+            } else {
+                index = items.length - 3;
+            }
+            updateCarousel();
+        });
+    </script>
+</body>

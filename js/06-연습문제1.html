@@ -1,0 +1,21 @@
+<body>
+    <script>
+        function max(arr) {
+            // 배열이 비어있을 경우 예외 처리
+            if (arr.length === 0) return null;
+            // 첫 번째 요소를 초기값으로 설정
+            let output = arr[0];
+
+            // 배열을 순회하며 최대값 찾기
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > output) {
+                    output = arr[i];
+                }
+            }
+
+            return output;
+        }
+        
+        console.log(max([1, 2, 3, 4]));
+    </script>
+</body>

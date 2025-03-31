@@ -1,0 +1,139 @@
+<head>
+    <style>
+        .container {
+            display: inline-block;
+        }
+
+        .inputlabel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button-container {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 5px;
+            width: 250px;
+        }
+
+        p {
+            background-color: lightgray;
+            padding: 20px;
+            max-width: 240px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inputlabel">
+            <label>년: <input type="text" id="yearInput" placeholder="예: 1995"></label>
+            <label>월: <input type="text" id="monthInput" placeholder="예: 8"></label>
+            <label>일: <input type="text" id="dayInput" placeholder="예: 7"></label>
+        </div>
+
+        <div class="button-container">
+            <button onclick="generateNickname()">결과</button>
+        </div>
+    </div>
+    <p id="output"></p>
+
+    <script>
+        year = {
+            0: '시끄러운 또는 말 많은',
+            1: '푸른',
+            2: '적색',
+            3: '조용한',
+            4: '웅크린',
+            5: '백색',
+            6: '지혜로운',
+            7: '용감한',
+            8: '날카로운',
+            9: '욕심많은'
+        }
+
+        month = {
+            1: '늑대', 2: '태양', 3: '양', 4: '매',
+            5: '황소', 6: '불꽃', 7: '나무', 8: '달빛',
+            9: '말', 10: '돼지', 11: '하늘', 12: '바람'
+        }
+
+        day = {
+            1: '와(과) 함께 춤을',
+            2: '의 기상',
+            3: '은(는) 그림자속에',
+            4: '의 행진',
+            5: '의 고향',
+            6: '의 정령',
+            7: '의 환생',
+            8: '의 죽음',
+            9: '의 아래에서',
+            10: '을(를) 보라',
+            11: '이(가) 노래하다',
+            12: '의 그늘 -> 그림자',
+            13: '의 일격',
+            14: '에게 쫓기는 남자',
+            15: '의 행진',
+            16: '의 왕',
+            17: '의 유령',
+            18: '을 죽인자',
+            19: '은(는) 맨날 잠 잔다',
+            20: '처럼',
+            21: '의 고향',
+            22: '의 전사',
+            23: '은(는) 나의 친구',
+            24: '의 노래',
+            25: '의 정령',
+            26: '의 파수꾼',
+            27: '의 악마',
+            28: '와(과) 같은 사나이',
+            29: '의 심판자 -> 을(를) 쓰러트린 자',
+            30: '의 혼',
+            31: '은(는) 말이 없다',
+        }
+
+        function generateNickname() {
+            // 년, 월, 일 입력받은 값 cosnt에 저장
+            const yearInput = document.getElementById("yearInput").value;
+            const monthInput = document.getElementById("monthInput").value;
+            const dayInput = document.getElementById("dayInput").value;
+
+            // 입력받은 년도의 마지막 자리 숫자를 추출
+            const lastDigit = yearInput.slice(-1);
+            // 입력받은 월과 일을 정수형으로 변환
+            const birthMonth = parseInt(monthInput, 10);
+            const birthDay = parseInt(dayInput, 10);
+
+            // 예외처리1 -> 년, 월, 일을 입력받지 못했을 때
+            if (!yearInput || !monthInput || !dayInput) {
+                document.getElementById("output").innerText = "년, 월, 일을 모두 입력해주세요.";
+                return; // 함수 실행 중단
+            }
+
+            // 예외처리2 -> 년, 월, 일이 올바른 숫자 값이 아닐 때
+            if (!(lastDigit in year) || !(birthMonth in month) || !(birthDay in day)) {
+                document.getElementById("output").innerText = "올바른 날짜를 입력해주세요.";
+                return; // 함수 실행 중단
+            }
+
+            // 닉네임 생성 -> 년도의 마지막 숫자, 월, 일에 해당하는 값을 조합
+            const nickname = `${year[lastDigit]} ${month[birthMonth]}${day[birthDay]}`;
+
+            // 생성된 닉네임을 HTML의 <p id="output"> 요소에 출력
+            document.getElementById("output").innerText = nickname;
+        }
+    </script>
+</body>

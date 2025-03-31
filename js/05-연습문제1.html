@@ -1,0 +1,87 @@
+<head>
+    <style>
+        .container {
+            display: inline-block;
+        }
+
+        .inputlabel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button-container {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 5px;
+            width: 250px;
+        }
+
+        p {
+            background-color: lightgray;
+            padding: 20px;
+            max-width: 240px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inputlabel">
+            <label>이름: <input type="text" id="firstName" placeholder="이름 입력"></label>
+            <label>성: <input type="text" id="lastName" placeholder="성 입력"></label>
+            <label>나이: <input type="number" id="age" placeholder="나이 입력"></label>
+        </div>
+
+        <div class="button-container">
+            <button onclick="createUser()">사용자 생성</button>
+        </div>
+    </div>
+    <p id="result"></p>
+
+    <script>
+        class User {
+            constructor(firstName, lastName, age) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+            }
+
+            // age의 Getter
+            get age() {
+                return this._age;
+            }
+
+            // age의 Setter (음수 값 입력 시 0으로 설정)
+            set age(value) {
+                this._age = value < 0 ? 0 : value;
+            }
+        }
+
+        // 버튼 클릭 시 실행되는 함수
+        function createUser() {
+            // 사용자 입력값 받기
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const age = parseInt(document.getElementById('age').value);
+
+            // 새로운 User 객체 생성
+            const user = new User(firstName, lastName, age);
+
+            // 결과 출력
+            document.getElementById('result').innerText = `사용자: ${user.lastName} ${user.firstName}, 나이: ${user.age}`;
+        }
+    </script>
+</body>

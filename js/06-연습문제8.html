@@ -1,0 +1,25 @@
+<body>
+    <script>
+        const array = [6, 7, 8, 9, 10, 1, 2, 3, 4, 5];
+
+        // 홀수는 오름차순, 짝수는 내림차순으로 정렬
+        const newArray = array.sort((next, prev) => {
+            // 홀수인 경우 오름차순, 짝수인 경우 내림차순 정렬
+            if (next % 2 !== 0 && prev % 2 !== 0) {
+                // 홀수끼리는 오름차순 정렬
+                return next - prev;
+            } else if (next % 2 === 0 && prev % 2 === 0) {
+                // 짝수끼리는 내림차순 정렬
+                return prev - next;
+            } else if (next % 2 !== 0 && prev % 2 === 0) {
+                // 홀수가 짝수보다 우선
+                return -1;
+            } else {
+                // 짝수가 홀수보다 우선
+                return 1;
+            }
+        });
+        
+        console.log(`${newArray}`);
+    </script>
+</body>

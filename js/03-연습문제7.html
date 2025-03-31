@@ -1,0 +1,18 @@
+<body>
+    <script>
+        const lotto = [1, 8, 16];
+        let cnt = 0;
+        let isMatch = false;
+
+        while (!isMatch) {
+            cnt++;
+            let attempt = [];
+            for (let i = 0; i < 3; i++) {
+                attempt.push(Math.floor(Math.random() * 45) + 1);
+            }
+            isMatch = attempt.every((num, index) => num === lotto[index]);
+        }
+
+        console.log(`1등 맞추기 시도 횟수: ${cnt}`);
+    </script>
+</body>
