@@ -1,0 +1,19 @@
+<body>
+    <label>검색어 입력 : <input type="text" name="search"></label>
+    <script>
+        const input = document.querySelector('[name=search]');
+
+        // 입력박스에 포커스가 가면 자동으로 '#' 추가
+        input.addEventListener('focus', (event) => {
+            event.target.value = '#';
+        });
+
+        // 스페이스바를 누르면 ", #"가 추가되게 하기
+        input.addEventListener('keydown', (event) => {
+            if (event.key === ' ') {
+                event.preventDefault();  // 스페이스바 기본 동작 방지
+                event.target.value += ', #';  // ", #" 추가
+            }
+        });
+    </script>
+</body>

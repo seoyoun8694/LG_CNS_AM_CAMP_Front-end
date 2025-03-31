@@ -1,0 +1,17 @@
+<body>
+    <input type="text" id="inchInput"> inch
+    <button onclick="convertToCm()">계산</button>
+    <p id="result"></p>
+    
+    <script>
+        function convertToCm() {
+            const inch = parseFloat(document.getElementById("inchInput").value);
+            if (!isNaN(inch)) {
+                const cm = inch * 2.54;
+                document.getElementById("result").textContent = `${cm.toFixed(2)} cm`;
+            } else {
+                document.getElementById("result").textContent = "숫자를 입력하세요.";
+            }
+        }
+    </script>
+</body>

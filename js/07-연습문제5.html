@@ -1,0 +1,10 @@
+<body>
+    <a href='http://ggoreb.com' id="link">이동</a>
+    <script>
+        document.getElementById("link").addEventListener("click", function(event) {
+            alert("차단");
+            event.preventDefault();
+            event.stopPropagation();
+        });
+    </script>
+</body>
