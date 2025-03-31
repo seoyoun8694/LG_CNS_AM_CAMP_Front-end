@@ -1,0 +1,87 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: blue;
+            font-weight: bold;
+        }
+        .inputdiv {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+        }
+
+        button {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .result-box {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>📌 N을 1로 만드는 최소 횟수</h2>
+
+        <div class="inputdiv">
+            <label>N 입력<input type="number" id="nValue" class="form-control" min="1"></label>
+            <label>K 입력<input type="number" id="kValue" class="form-control" min="2"></label>
+        </div>
+
+        <div class="d-grid mt-3">
+            <button type="button" class="btn btn-primary btn-block" onclick="calculateMinOperations()">결과 확인</button>
+        </div>
+
+        <hr>
+        <h3 class="text-center">✅ 계산 결과</h3>
+        <p id="result" class="alert alert-info result-box">결과가 여기에 표시됩니다.</p>
+    </div>
+
+    <script>
+        function calculateMinOperations() {
+            let N = parseInt(document.getElementById("nValue").value);
+            let K = parseInt(document.getElementById("kValue").value);
+
+            if (isNaN(N) || isNaN(K) || N < 1 || K < 2) {
+                alert("올바른 값을 입력하세요. (N은 1 이상, K는 2 이상)");
+                return;
+            }
+
+            let count = 0;
+
+            while (N > 1) {
+                if (N % K === 0) {
+                    N /= K;
+                } else {
+                    N -= 1;
+                }
+                count++;
+            }
+
+            document.getElementById("result").innerHTML = `최소 횟수: <strong>${count}</strong>`;
+        }
+    </script>
+</body>
