@@ -15,5 +15,20 @@
                 event.target.value += ', #';  // ", #" 추가
             }
         });
+
+        // 백스페이스를 누르면 해시태그별로 하나씩 사라지게 하기
+        input.addEventListener('keydown', (event) => {
+            if (event.key === 'Backspace') {
+                const currentValue = event.target.value;
+
+                // 해시태그별로 분리하여 마지막 해시태그를 제거
+                const hashtags = currentValue.split(', ').filter(Boolean);
+                if (hashtags.length > 0) {
+                    hashtags.pop();  // 마지막 해시태그 제거
+                    event.target.value = hashtags.join(', ');  // 나머지 해시태그들로 다시 업데이트
+                }
+                event.preventDefault();  // 백스페이스 기본 동작 방지
+            }
+        });
     </script>
 </body>
